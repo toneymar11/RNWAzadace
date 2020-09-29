@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<definitions name="ProductList" targetNamespace="urn:ProductList" xmlns:tns="urn:ProductList"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Products">
+      <xsd:element name="getSuppliersID" type="xsd:string" />
+
+      <xsd:complexType name='return'>
+      <xsd:complexContent>
+      <xsd:restriction base='soapenc:Array'>
+        <xsd:attribute wsdl:arrayType='Products[]' ref='soapenc:arrayType' />
+      </xsd:restriction>
+    </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name='Customers'>
+      <xsd:all>
+            <xsd:element
+              name='ProductID'
+              type='xsd:int'/>
+            <xsd:element
+              name='ProductName'
+              type='xsd:string'/>
+            <xsd:element
+              name='SupplierID'
+              type='xsd:int'/>
+            <xsd:element
+              name='CategoryID'
+              type='xsd:int'/>
+            <xsd:element
+              name='QuantityPerUnit'
+              type='xsd:string'/>
+            <xsd:element
+              name='UnitPrice'
+              type='xsd:decimal'/>
+            <xsd:element
+              name='UnitsInStock'
+              type='xsd:int'/>
+             <xsd:element
+              name='UnitsOnOrder'
+              type='xsd:int'/>
+            <xsd:element
+              name='ReorderLevel'
+              type='xsd:int'/>
+            <xsd:element
+              name='Discontinued'
+              type='xsd:byte'/>
+      </xsd:all>
+    </xsd:complexType> 	  
+	</xsd:schema>			
+  </types>
+  
+  <message name="listProducts">
+    <part name="SuppliersID" type="tns:getSuppliersID" />
+  </message>
+  
+  <message name="listProductsResponse">
+    <part name="return" type="tns:return" />
+  </message>  
+  
+  <portType name="ProductsPort">
+    <operation name="listProducts">
+	  <input message="tns:listProducts" />
+	  <output message="tns:listProductsResponse" />
+	</operation>
+  </portType>
+  
+  <binding name="ProductsBinding" type="tns:ProductsPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+	  <operation name="listProducts">
+	    <soap:operation soapAction="urn:ProductsAction" />
+		<input>
+		  <soap:body use="encoded" namespace="urn:Products" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />		  
+		</input>
+		<output>
+		  <soap:body use="encoded" namespace="urn:Products" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />		  
+		</output>
+	  </operation>
+  </binding>
+  
+  <service name="ProductsService">
+    <port name="ProductsPort" binding="tns:ProductsBinding">
+	  <soap:address location="http://localhost/soap/zad1/server.php" />
+	</port>
+  </service>
+    
+</definitions>
