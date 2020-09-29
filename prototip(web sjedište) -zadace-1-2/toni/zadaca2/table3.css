@@ -1,0 +1,28 @@
+.tip {
+    border-bottom: 1px dashed;
+    text-decoration: none;
+}
+.tip:hover {
+    cursor: cell;
+    position: relative;
+}
+.tip span {
+    display: none;
+}
+.tip:hover span {
+    border: #c0c0c0 1px dotted;
+    padding: 5px 20px 5px 5px;
+    display: block;
+    z-index: 100;
+    background: #a35d5d no-repeat 100% 5%;
+    left: 0px;
+    margin-left: 14.5%;
+    margin-top:-50%;
+    width: 40%;
+    position: absolute;
+    top: 10px;
+    text-decoration: none;
+    font-family:cursive;
+    color: white;
+    font-size: 20px;
+}
