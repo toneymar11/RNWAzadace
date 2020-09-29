@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="table3.css">
+  <style>
+    #product_name {
+        width: 100%;
+        padding: 10px 10px;
+        margin: 3px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    #category{
+        width: 100%;
+        padding: 10px 10px;
+        margin: 3px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+
+    }
+    #search{
+      width: 100%;
+        background-color: #3b5998;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    #err{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+    <div style="width: 20%;">
+        <input type="radio" name="action" value="and">AND<br>
+        <input type="radio" name="action" value="or" checked> OR<br>
+        <input type="text" name="product_name" id="product_name" placeholder="Naziv produkta">
+       
+        <div id="err"></div>
+        <input type="submit" value="Submit" id="search">
+    </div>
+    <div id="messages">
+    </div>
+</body>
+<script src="products.js">
+</script>
+</html>
